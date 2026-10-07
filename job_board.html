@@ -1833,6 +1833,25 @@
     .columns, .script-columns { grid-template-columns: 1fr !important; gap: 12px; }
     .column { min-width: 0; }
     .sw-grid { grid-template-columns: 1fr !important; }
+
+    /* 修复 column-header (国内招聘红框重叠): click-count 改静态 + header 可换行 */
+    .column-header.cn { flex-wrap: wrap; }
+    .column-header.cn .header-title { flex-shrink: 1; min-width: 0; }
+    .column-header.cn .click-count {
+      position: static !important;
+      transform: none !important;
+      font-size: 12px !important;
+      width: 100%;
+      margin-top: 6px;
+      text-align: left;
+      color: #ff7a00 !important;
+    }
+    .column-header.cn .followup-hint {
+      position: static !important;
+      margin-top: 6px;
+      font-size: 12px !important;
+    }
+
     /* 卡片相关容器防溢出 */
     .bl-body, .sw-group, .itv-list { min-width: 0; }
   }
