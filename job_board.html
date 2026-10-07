@@ -1793,6 +1793,49 @@
   @media (max-width: 500px) {
     .tips-grid { grid-template-columns: 1fr; }
   }
+
+  /* ===== 移动端适配 (2026-10-08 由 assistant 注入) ===== */
+  @media (max-width: 768px) {
+    html, body {
+      overflow-x: hidden;
+      touch-action: pan-y;
+      overscroll-behavior-x: none;
+    }
+    body { padding: 6px 10px 16px; }
+    /* 顶导: 无 hover, 始终展开可点 */
+    .top-nav {
+      height: auto !important;
+      padding: 6px !important;
+      overflow: visible !important;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .nav-tab {
+      padding: 8px 10px !important;
+      font-size: 13px !important;
+      flex: 0 0 auto;
+    }
+    /* 平台 tabs: 6 个太长装不下, 改成横向可滚 (页本身不横滑) */
+    .platform-tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+    }
+    .platform-tabs::-webkit-scrollbar { display: none; }
+    .ptab {
+      flex: 0 0 auto;
+      min-width: max-content;
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+    /* 两栏单列 (兜底) */
+    .columns, .script-columns { grid-template-columns: 1fr !important; gap: 12px; }
+    .column { min-width: 0; }
+    .sw-grid { grid-template-columns: 1fr !important; }
+    /* 卡片相关容器防溢出 */
+    .bl-body, .sw-group, .itv-list { min-width: 0; }
+  }
 </style>
 </head>
 <body data-page-node-id="A2e7LuttpJTcXYEuxCx6EJ">
