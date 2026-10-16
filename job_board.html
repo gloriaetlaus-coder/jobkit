@@ -476,10 +476,9 @@
     font-weight: 600;
     white-space: nowrap;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    row-gap: 2px;
     position: relative;
+    container-type: inline-size;
     letter-spacing: -0.02em;
   }
   .column-header.cn .header-title {
@@ -487,7 +486,6 @@
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-    order: 1;
     font-size: 19px;
     font-weight: 600;
   }
@@ -496,12 +494,12 @@
     font-size: 18px;
   }
   .column-header.cn .click-count {
-    order: 3;
-    flex: 0 0 100%;
+    flex: 1 1 auto;
     min-width: 0;
     text-align: center;
-    white-space: normal;
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 13px;
     font-weight: 500;
     color: #86868b;
@@ -512,6 +510,16 @@
     font-size: 16.2px !important;
     cursor: pointer;
     user-select: none;
+  }
+  /* 栏宽变窄时自动缩小横幅字号，保证它和左右标题始终在同一行且不截断 */
+  @container (max-width: 700px) {
+    .column-header.cn .click-count-banner { font-size: 14px !important; }
+  }
+  @container (max-width: 620px) {
+    .column-header.cn .click-count-banner { font-size: 12.5px !important; }
+  }
+  @container (max-width: 540px) {
+    .column-header.cn .click-count-banner { font-size: 10.5px !important; }
   }
   /* 栏目标题文字可点击折叠 */
   .column-header.en { cursor: pointer; user-select: none; }
@@ -527,7 +535,6 @@
   }
   .column-header.cn .followup-hint {
     position: static;
-    order: 2;
     margin-left: auto;
     flex-shrink: 0;
     font-size: 12px;
